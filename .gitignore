@@ -1,0 +1,15 @@
+# backend gitignore
+/backend/node_modules/
+
+/backend/.env
+/backend/yarn.lock
+
+
+# frontend gitignore
+/frontend/node_modules/
+
+/frontend/.env
+/frontend/yarn.lock
+/frontend/build
+
+memo

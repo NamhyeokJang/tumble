@@ -1,0 +1,14 @@
+.container {
+    margin: 0 auto;
+    width: 1080px;
+    height: 69px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.left {
+    display: flex;
+    z-index: 1;
+}
