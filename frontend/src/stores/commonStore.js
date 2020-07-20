@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx'
 
 class CommonStore {
-    @observable isHeader
+    @observable enable
     @observable headerType
 
     constructor() {
@@ -10,8 +10,15 @@ class CommonStore {
     }
 
     @action.bound
-    setHeader = () => {
-        this.isHeader = !this.isHeader
+    enableHeader = (type) => {
+        this.enable = true
+        this.headerType = type
+    }
+
+    @action.bound
+    disableHeader = () => {
+        this.enable = false
+        this.headerType = 'none'
     }
 }
 

@@ -1,0 +1,34 @@
+.container {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+
+
+
+
+/* Card Style */
+.cardContainer {
+    margin: 7px;
+    height: 310px;
+    border: 0.5px solid #D8D8D8;
+    border-radius: 5px;
+}
+
+.cardContainer:hover {
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 5px 20px #F2F2F2;
+}
+
+.cardImage {
+    width: 100%;
+    height: 180px;
+    border-radius: 5px 5px 0 0;
+}
+
+.cardInfo {
+    width: 100%;
+    padding: 10px
+}

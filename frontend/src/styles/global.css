@@ -26,3 +26,18 @@
     cursor: pointer;
     color: #636e72;
 }
+
+.searchText { 
+    border: none;
+    height: 80%;
+    
+}
+
+.searchText input {
+    outline: none;
+}
+
+.searchText input[type='text'] {
+    font-size: 22px;
+    font-weight: bold;
+}

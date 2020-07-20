@@ -1,0 +1,44 @@
+.container {
+    margin: 0 auto;
+    width: 1080px;
+    height: 100%;
+}
+
+
+/* Collection */
+.collectionContainer {
+    width: 520px;
+    height: 124px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    margin: 7px;
+}
+
+.collectionContainer:hover {
+    cursor: pointer;
+    box-shadow: 1px 5px 20px #F2F2F2;
+}
+
+.info {
+    padding: 18px 22px;
+}
+
+.cover {
+    width: 180px;
+    height: 100%;
+}
+
+.divider {
+    content: "";
+    width: 24px;
+    height: 2px;
+    position: absolute;
+    background: rgb(33, 33, 33);
+}
+
+.bottom {
+    position: absolute;
+    bottom: 13px;
+    font-size: 12px;    
+}
