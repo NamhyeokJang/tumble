@@ -15,17 +15,21 @@ db.User = require('./user')(sequelize, Sequelize);
 db.Project = require('./project')(sequelize, Sequelize)
 db.Product = require('./product')(sequelize, Sequelize)
 db.Item = require('./item')(sequelize, Sequelize)
+db.Compose = require('./compose')(sequelize, Sequelize)
 db.Sponsor = require('./sponsor')(sequelize, Sequelize)
 
 // DB 관계
-db.User.hasMany(db.Project, { foreignKey: 'user_id', sourceKey: 'id' });
-db.Project.belongsTo(db.User, { foreignKey: 'user_id', targetKey: 'id' });
+db.User.hasMany(db.Project, { foreignKey: 'userId', sourceKey: 'id' });
+db.Project.belongsTo(db.User, { foreignKey: 'userId', targetKey: 'id' });
 
-db.Project.hasMany(db.Product, { foreignKey: 'project_id', sourceKey: 'id' });
-db.Product.belongsTo(db.Project, { foreignKey: 'project_id', targetKey: 'id' });
+db.Project.hasMany(db.Product, { foreignKey: 'projectId', sourceKey: 'id' });
+db.Product.belongsTo(db.Project, { foreignKey: 'projectId', targetKey: 'id' });
 
 db.Product.belongsToMany(db.Item, { through: 'compose' })
 db.Item.belongsToMany(db.Product, { through: 'compose' })
+
+db.Project.hasMany(db.Item, { foreignKey: 'projectId', sourceKey: 'id' })
+db.Item.belongsTo(db.Product, { foreignKey: 'projectId', targetKey: 'id' })
 
 db.User.belongsToMany(db.Product, { through: 'sponsor' })
 db.Product.belongsToMany(db.User, { through: 'sponsor' })

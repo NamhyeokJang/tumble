@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         category: {
             type: DataTypes.STRING(30),
         },
-        dead_line: {
+        deadLine: {
             type: DataTypes.DATE,
             allowNull: false
         },

@@ -1,8 +1,12 @@
 const router = require('express').Router()
 const { User } = require('../../models')
 
-router.get('/', (req, res) => {
-    res.send('GET: /users')
+
+//Test code - All User
+router.get('/', async (req, res) => {
+    const allUser = await User.findAll()
+
+    res.json({ users: allUser })
 })
 
 // Sign User By Email

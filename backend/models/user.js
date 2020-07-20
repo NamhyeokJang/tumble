@@ -13,18 +13,19 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(50),
             allowNull: false,
         },
-        is_host: {
+        isHost: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         },
         bio: {
             type: DataTypes.TEXT
         },
-        profile_image: {
+        profileImage: {
             type: DataTypes.STRING(100)
         },
-        login_method: {
-            type: DataTypes.STRING(30)
+        loginMethod: {
+            type: DataTypes.STRING(30),
+            defaultValue: 'email'
         },
         created_at: {
             type: DataTypes.DATE,
