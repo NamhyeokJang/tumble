@@ -2,22 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { Avatar, Button } from 'antd';
 import { MenuOutlined, SearchOutlined, UserOutlined } from '@ant-design/icons'
-import { observer, inject } from 'mobx-react'
 
 import logo from '../../styles/logo.png'
 import styles from './index.module.css'
 
 
-@observer
+
 class index extends Component {
     render() {
-        const { commonStore } = this.props
         return (
             <div style={{ width: '100%', borderBottom: '1px solid #b2bec3' }}>
                 <div className={styles.container}>
                     <div className={styles.left}>
                         <Button className='link-btn' type='link'>
-                            <Link to='/view'>
+                            <Link to='/menu'>
                                 <MenuOutlined />
                                 <span>프로젝트 둘러보기</span>
                             </Link>

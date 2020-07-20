@@ -52,7 +52,7 @@ class index extends Component {
     }
 
     handleSubmit = async () => {
-        const res = await axios.post(`${process.env.REACT_APP_API}/users/login`, {
+        const res = await axios.post(`${process.env.REACT_APP_API}/user/login`, {
             email: this.email,
             password: this.password
         }).then(res => console.log(res.data))

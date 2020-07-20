@@ -21,7 +21,7 @@ class index extends Component {
                     </div>
                 </Carousel>
                 <div className={styles.container}>
-                    <ProjectCarousel title={'주목할 만한 프로젝트'} type={'editor'} />
+                    <ProjectCarousel title={'주목할 만한 프로젝트'} type={'editor'} link={'spotlight'} />
                 </div>
                 <div style={{ backgroundColor: '#FAFAFA', height: '250px', padding: '20px' }}>
                     <CollectionCarousel />

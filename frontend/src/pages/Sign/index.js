@@ -96,7 +96,7 @@ class index extends Component {
             alert('Not password')
             return
         }
-        await axios.post(`${process.env.REACT_APP_API}/users/sign`, {
+        await axios.post(`${process.env.REACT_APP_API}/user/sign`, {
             name: this.name,
             email: this.email,
             password: this.password

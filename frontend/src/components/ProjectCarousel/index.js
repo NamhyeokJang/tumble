@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Carousel, Typography, Progress } from 'antd'
 import { LeftOutlined, RightOutlined, CalendarOutlined } from '@ant-design/icons'
@@ -35,10 +36,14 @@ class index extends Component {
             slidesToShow: 4,
             slidesToScroll: 4
         }
+        const { link } = this.props
+        const filteredLink = link === 'spotlight' ? `/collection/${link}` : `/discover/${link}`
         return (
             <div className={styles.container}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h2 style={{ fontWeight: 'bold' }}>{this.props.title} <RightOutlined /></h2>
+                    <Link to={filteredLink} >
+                        <h2 style={{ fontWeight: 'bold' }}>{this.props.title} <RightOutlined /></h2>
+                    </Link>
                     <div>
                         <LeftOutlined onClick={this.prev} style={{ fontSize: '20px', marginRight: '25px' }} />
                         <RightOutlined onClick={this.next} style={{ fontSize: '20px', }} />
@@ -46,7 +51,9 @@ class index extends Component {
                 </div>
                 <Carousel ref={node => (this.carousel = node)} {...carouselSettings} >
                     {this.state.projects.map((project, index) =>
-                        <Card key={index} project={project} />
+                        <Link to={`/project/${project.id}`} >
+                            <Card key={index} project={project} />
+                        </Link>
                     )}
                 </Carousel>
             </div>
@@ -91,15 +98,15 @@ const Card = ({ project }) => {
                         style={{ fontSize: '15px', fontWeight: 'bold', marginBottom: '3px' }}>
                         {project.title}
                     </Paragraph>
-                    <p style={{ fontSize: '12px' }}>{project.user.name}</p>
+                    <p style={{ fontSize: '12px', color: 'black' }}>{project.user.name}</p>
                 </div>
                 <Progress percent={percent} showInfo={false} strokeWidth={3} strokeColor='red' />
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '12px', fontWeight: 'bold' }}>
+                    <span style={{ fontSize: '12px', fontWeight: 'bold', color: 'black' }}>
                         <CalendarOutlined style={{ marginRight: '3px' }} />
                         {date}
                     </span>
-                    <span style={{ fontSize: '12px', fontWeight: 'bold' }}>
+                    <span style={{ fontSize: '12px', fontWeight: 'bold', color: 'black' }}>
                         {total.toLocaleString()}원 {percent}%
                     </span>
                 </div>
