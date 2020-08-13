@@ -1,30 +1,50 @@
 const faker = require('faker')
 const random = require('random')
-const { Project, Product, Item, Compose } = require('../models')
+const { FgRed, FgCyan, FgGreen } = require('./color')
+const { Project, Product, Item, Compose, sequelize } = require('../models')
 
+let count = 0
 
-const init = async () => {
-    const findProject = await Project.findAll({
-        include: [Item, Product]
+const createComposes = async () => {
+    const projects = await Project.findAll({
+        include: [
+            {
+                model: Product,
+                raw: true
+            },
+            {
+                model: Item,
+                raw: true
+            }
+        ]
     })
-        .then(res => res.map(project => project.dataValues))
+        .then(projects => projects.map(project => project.dataValues))
 
-    findProject.forEach(async project => {
+    const create = projects.map(async project => {
         const products = project.products.map(product => product.dataValues)
         const items = project.items.map(item => item.dataValues)
-        products.forEach(async product => {
-            const itemLength = items.length - 1
-            try {
-                await Compose.create({
-                    productId: product.id,
-                    itemId: items[random.int(0, itemLength)].id
-                })
-            } catch (error) {
-                console.error(items[random.int(0, itemLength)].id)
+        const composes = products.map(async product => {
+            for (let index = 0; index < random.int(2, 5); index++) {
+                count++
+                try {
+                    await Compose.create({
+                        quantiy: random.int(1, 10),
+                        itemId: items[random.int(0, (items.length - 1))].id,
+                        productId: product.id
+                    })
+                } catch (error) {
+                }
             }
         })
+        Promise.all(composes).then(() => console.log(FgGreen, `${project.id} Created Composes`))
+
     })
+
+    // Promise.all(create).then(() => {
+    //     console.log(FgCyan, `Created Composes`)
+    //     sequelize.close()
+    // })
 }
 
 
-init()
+module.exports = createComposes

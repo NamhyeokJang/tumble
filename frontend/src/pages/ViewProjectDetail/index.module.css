@@ -1,0 +1,150 @@
+.container {
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.category {
+    background-color: #FAFAFA;
+    border: 1px solid #dfe6e9;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-weight: 500;
+}
+
+.title {
+    font-size: 45px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.userInfo {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.userInfo img {
+    width: 25px;
+    height: 25px;
+    border-radius: 25px; 
+    margin-right: 10px;
+}
+
+.userInfo p {
+    font-weight: 700;
+}
+                                
+.infoContainer {       
+    width: 100%;                         
+    height: 500px;
+    display: flex;                            
+}
+
+.infoContainer img {
+    width: 60%;
+    height: 100%;
+    margin-right: 35px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.total {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.percent {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.sponsor {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.infoBox {
+    width: 350px;
+    height: 100px;
+    background-color: #FAFAFA;
+    border: 1px solid #dfe6e9;
+    padding: 15px 20px;
+    margin-top: 14px;
+    margin-bottom: 15px;
+}
+
+.infoBox p{
+    margin-bottom: 0px;
+}
+
+.btnContainer {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    
+}
+
+.btnContainer button {
+    height: 100%;
+}
+
+.sponBtn {
+    width: 220px;
+    background-color: #ff7675;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.iconBtn {
+    width: 50px;
+    background-color: white;
+    border: 1px solid #dfe6e9;
+    border-radius: 5px;
+    font-size: 20px;
+    outline: none;
+}
+
+.tabContainer {
+    border-top: 1px solid #E6E6E6;
+}
+
+.tabPaneOut {
+    background-color: #F2F2F2;
+    padding: 15px;
+    border-top: 1px solid #E6E6E6;
+    box-shadow: 1px 1px 1px 1px #D8D8D8;
+}
+
+.tabPaneIn {
+    margin: 0 auto;
+    width: 1080px;
+    background-color: #F2F2F2;
+    display: flex;
+}
+
+.story {
+    width: 670px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 1px 1px #D8D8D8;
+    margin-right: 10px;
+}

@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User, Project, Product, Sponsor, Compose } = require('../../models')
+const { User, Project, Product, Sponsor, Compose, sequelize } = require('../../models')
 
 // 모든 프로젝트 불러오기 && 검색 기능 추가 && Pagination 
 router.get('/', async (req, res) => {
@@ -9,10 +9,10 @@ router.get('/', async (req, res) => {
     delete query.page
     delete query.limit
     try {
-        const allProject = await Project.findAndCountAll({
+        const allProject = await Project.findAll({
             where: query,
-            limit: limit ? parseInt(limit) : 28,
-            offset: limit ? 0 : page * 28,
+            limit: limit ? parseInt(limit) : 27,
+            offset: limit ? 0 : page * 27,
             attributes: {
                 exclude: ['userId']
             },
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
         })
         res.status(200).json({
             count: allProject.count,
-            projects: allProject.rows,
+            projects: allProject
         })
     } catch (error) {
         res.json({ result: 'error', message: '잘못된 접근입니다.', error })
@@ -39,23 +39,22 @@ router.get('/:projectId', async (req, res) => {
     try {
         const findProjectByProjectId = await Project.findOne({
             where: {
-                id: projectId
+                id: projectId,
             },
-            attributes: {
-                exclude: ['userId']
-            },
+            attributes: ['id', [sequelize.fn('sum', sequelize.col('sponsors.donation')), 'total']],
             include: [
-                {
-                    model: Product,
-                    attributes: ['id']
-                },
                 {
                     model: User,
                     attributes: {
                         exclude: ['password', 'created_at', 'loginMethod']
                     }
-                }
-            ]
+                },
+                {
+                    model: Sponsor,
+                    attributes: [],
+                },
+            ],
+            group: ['id']
         })
         res.json({ project: findProjectByProjectId })
     } catch (error) {
@@ -64,7 +63,7 @@ router.get('/:projectId', async (req, res) => {
 })
 
 //Project 후원자 수 검색
-router.get('/count/:projectId', async (req, res) => {
+router.get('/sponsor/:projectId', async (req, res) => {
     const { projectId } = req.params
 
     const countSponsorByProjectId = await Sponsor.count({
@@ -80,30 +79,35 @@ router.get('/count/:projectId', async (req, res) => {
 router.get('/total/:projectId', async (req, res) => {
     const { projectId } = req.params
 
-    const findSponsorByProjectId = await Sponsor.findAll({
-        where: {
-            projectId
-        }
-    })
-        .then(results => results.map(result => result.dataValues))
-    const prices = await findSponsorByProjectId.map(async sponsor => {
-        const price = await Product.findOne({
+    try {
+        const findTotal = await Sponsor.findOne({
+            raw: true,
             where: {
-                id: sponsor.productId
+                projectId
             },
-            attributes: ['price']
-        }).then(result => result.dataValues.price)
-        return price
-    })
+            attributes: [[sequelize.fn('sum', sequelize.col('donation')), 'total']],
+            group: ['projectId']
+        })
 
-    Promise.all(prices).then(result => {
-        if (result.length > 0) {
-            const total = result.reduce((a, b) => a + b)
-            res.json({ total })
-        } else {
-            res.json({ total: 0 })
-        }
-    })
+        res.json({ total: findTotal.total })
+    } catch (error) {
+        res.json({ error })
+    }
+})
+
+router.get('/test/:id', async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const findProject = await Sponsor.findAll({
+            attributes: ['projectId', [sequelize.fn('sum', sequelize.col('donation')), 'total']],
+            group: ['projectId']
+        })
+
+        res.json({ findProject })
+    } catch (error) {
+        res.json({ error })
+    }
 })
 
 

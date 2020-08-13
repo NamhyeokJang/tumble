@@ -1,28 +1,32 @@
 const faker = require('faker')
 const random = require('random')
-const { User } = require('../models')
+const { FgRed, FgCyan } = require('./color')
+const { User, sequelize } = require('../models')
 
-const NUM = parseInt(process.argv[2])
 
 const randomBoolean = () => {
     const bool = random.int(0, 1)
     return bool ? true : false
 }
 
-const init = async () => {
-    for (let idx = 0; idx < NUM; idx++) {
-        await User.create({
-            email: faker.internet.email(),
-            password: '1234',
-            name: faker.name.findName(),
-            isHost: randomBoolean(),
-            bio: faker.lorem.sentences(),
-            profileImage: `https://picsum.photos/200/300?random=${idx}`,
-            loginMethod: 'email'
-        })
+const createUsers = async (number) => {
+    for (let idx = 0; idx < number; idx++) {
+        try {
+            await User.create({
+                email: faker.internet.email(),
+                password: '1234',
+                name: faker.name.findName(),
+                isHost: randomBoolean(),
+                bio: faker.lorem.sentences(),
+                profileImage: `https://picsum.photos/200/300?random=${idx}`,
+                loginMethod: 'email'
+            })
+        } catch (error) {
+            console.log(FgRed, 'failed created user')
+        }
     }
-    console.log(`Created ${NUM} Users`)
+    await sequelize.close()
+    console.log(FgCyan, `Created ${number} Users`)
 }
 
-
-init()
+module.exports = createUsers

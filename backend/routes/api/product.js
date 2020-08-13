@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Product, Item, Compose } = require('../../models')
+const { Product, Item, Compose, Sponsor } = require('../../models')
 
 router.get('/', async (req, res) => {
     const findAllProduct = await Product.findAndCountAll()
@@ -26,6 +26,18 @@ router.get('/:productId', async (req, res) => {
     })
 
     res.json({ product: findProductByProductId })
+})
+
+router.get('/sponsor/:productId', async (req, res) => {
+    const { productId } = req.params
+
+    const findSponsorCount = await Sponsor.count({
+        where: {
+            productId
+        }
+    })
+
+    res.json({ count: findSponsorCount })
 })
 
 

@@ -5,12 +5,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import CommonStore from './stores/commonStore'
+import UserStore from './stores/userStore'
 
-const commonStore = new CommonStore()
+const userStore = new UserStore()
 
 ReactDOM.render(
-  <Provider commonStore={commonStore} >
+  <Provider userStore={userStore} >
     <App />
   </Provider>,
   document.getElementById('root')

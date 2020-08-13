@@ -1,0 +1,31 @@
+.userProfile {
+    display: flex;
+    margin-top: 60px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.profileImage { 
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D8D8D8;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+}
+
+.userBio {
+    width: 670px;
+    font-weight: 500;
+}
+
+.projectContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 80px;
+}

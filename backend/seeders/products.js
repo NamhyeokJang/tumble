@@ -1,22 +1,29 @@
 const faker = require('faker')
 const random = require('random')
-const { Project, Product } = require('../models')
+const { FgRed, FgCyan } = require('./color')
+const { Project, Product, sequelize } = require('../models')
 
-const init = async () => {
-    const findAllProject = await Project.findAll()
-    findAllProject.forEach(async (projectValue) => {
-        const project = projectValue.dataValues
-        const randomValue = random.int(1, 4)
+let count = 0
 
-        for (let index = 0; index < randomValue; index++) {
+const createProducts = async () => {
+    const projects = await Project.findAll({
+        raw: true
+    })
+    const create = await projects.map(async (project) => {
+        for (let index = 0; index < random.int(3, 6); index++) {
+            count++
             await Product.create({
-                price: random.int(1000, 30000),
+                price: random.int(10000, 110000),
                 name: faker.lorem.words(),
                 limit: random.int(10, 100),
                 projectId: project.id
             })
         }
     })
+    Promise.all(create).then(() => {
+        sequelize.close()
+        console.log(FgCyan, `Created ${count} products`)
+    })
 }
 
-init()
+module.exports = createProducts

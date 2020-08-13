@@ -1,0 +1,32 @@
+.container { 
+    margin-top: 100px !important;
+    border-top: 1px solid #E6E6E6;
+    padding-top: 30px;
+}
+
+.menuContainer p {
+    color: #848484;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.icon {
+    font-size: 24px;
+    margin-right: 18px;
+}
+
+.qBtn {
+    width: 120px;
+    height: 40px;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid #E6E6E6;
+    font-weight: bold;
+    color: #848484;
+    outline: none;
+}
+
+.qBtn:hover {
+    cursor: pointer;
+    border: 2px solid #A4A4A4;
+}

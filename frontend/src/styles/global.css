@@ -1,5 +1,10 @@
 @import '~antd/dist/antd.css';
 
+.container {
+    width: 1080px;
+    margin: 0 auto;
+}
+
 .w-btn {
     width: 100%;
     height: 45px;
@@ -41,3 +46,4 @@
     font-size: 22px;
     font-weight: bold;
 }
+

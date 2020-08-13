@@ -1,0 +1,49 @@
+.banner {
+    margin: 0 auto;
+    width:1080px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cover {
+    width: 220px;
+    height: 220px;
+}
+
+.info {
+    height: 220px;
+    margin-left: 30px;
+}
+
+.title {
+    font-size: 35px;
+    font-weight: bolder;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.description  {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+.snsIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+.itemContainer {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 80px;
+}

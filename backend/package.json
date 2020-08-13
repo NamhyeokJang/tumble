@@ -5,7 +5,9 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "clean": "node ./seeders/clean.js",
+    "seed": "node ./seeders",
     "seed_users": "node ./seeders/users.js",
+    "seed_collections": "node ./seeders/collection.js",
     "seed_projects": "node ./seeders/projects.js",
     "seed_products": "node ./seeders/products.js",
     "seed_items": "node ./seeders/items.js",

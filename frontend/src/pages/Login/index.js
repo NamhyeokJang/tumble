@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Input, Button, Divider, message } from 'antd'
 import { observable } from 'mobx'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 
 import styles from './index.module.css'
 
+@inject('userStore')
 @observer
 class index extends Component {
     @observable email
@@ -52,14 +53,18 @@ class index extends Component {
     }
 
     handleSubmit = async () => {
-        const res = await axios.post(`${process.env.REACT_APP_API}/user/login`, {
+        const res = await axios.post(`${process.env.REACT_APP_API}/users/login`, {
             email: this.email,
             password: this.password
-        }).then(res => console.log(res.data))
+        }).then(res => res.data)
+
+        this.props.userStore.login(res.user)
+        this.props.history.push('/')
     }
 
     searchPassword = () => {
-        message.warning('아직 미구현...')
+        console.log(this.props.userStore.userInfo)
+        // message.warning('아직 미구현...')
     }
 
     snsForLogin = () => {

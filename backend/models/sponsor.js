@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
+        donation: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
         created_at: {
             type: DataTypes.DATE,
             allowNull: false,

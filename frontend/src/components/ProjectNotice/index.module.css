@@ -1,0 +1,12 @@
+.container {
+    width: 670px;
+    background-color: white;
+    padding: 25px;
+    box-shadow: 1px 1px #D8D8D8;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.container p {
+    font-weight: 600;
+}

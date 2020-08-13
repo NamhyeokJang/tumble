@@ -3,3 +3,21 @@
     margin-top: 40px;
     width: 1080px;
 }
+
+
+.tag {
+    padding: 8px 16px;
+    margin-top: 12px;
+    margin-right: 12px;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 3px;
+    color: white;
+}
+
+.category {
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 3px;
+}

@@ -7,9 +7,6 @@ module.exports = (sequelize, DataTypes) => {
         category: {
             type: DataTypes.STRING(30),
         },
-        type: {
-            type: DataTypes.STRING
-        },
         deadLine: {
             type: DataTypes.DATE,
             allowNull: false
@@ -19,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         cover: {
             type: DataTypes.STRING(100)
+        },
+        description: {
+            type: DataTypes.STRING(250)
         },
         story: {
             type: DataTypes.TEXT
