@@ -1,6 +1,7 @@
 # backend gitignore
 /backend/node_modules/
 
+/backend/public
 /backend/.env
 /backend/yarn.lock
 
