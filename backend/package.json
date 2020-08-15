@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
+    "service": "pm2 start --name 'tumble' ./bin/www",
     "clean": "node ./seeders/clean.js",
     "seed": "node ./seeders",
     "seed_users": "node ./seeders/users.js",
