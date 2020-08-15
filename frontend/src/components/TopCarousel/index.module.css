@@ -21,7 +21,7 @@
 .pageContainer {
     display: flex;
     position: absolute;
-    bottom: 220px;
+    bottom: 280px;
     right: 0px;
 }
 
@@ -34,6 +34,8 @@
 
 .title {
     width: 600px;
+    height: 110px;
+    overflow: hidden;
     font-size: 35px;
     font-weight: bold;
     color: white;
@@ -41,6 +43,8 @@
 
 .description {
     width: 600px;
+    height: 74px;
+    overflow: hidden;
     color: white;
     font-size: 24px;
     font-weight: bold;
