@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet'
 import { Carousel } from 'antd'
 import {
     TopCarousel,
@@ -15,6 +16,10 @@ class index extends Component {
     render() {
         return (
             <>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>텀블벅 :: tumblebug</title>
+                </Helmet>
                 <TopCarousel />
                 <SpotlightContainer />
                 <CollectionContainer />

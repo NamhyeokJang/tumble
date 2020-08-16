@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet'
 import { ProjectCard } from '../../components'
 import { color, fetchCollection } from '../../utils'
 
@@ -26,6 +27,9 @@ class index extends Component {
         const backgroundColor = ['#a29bfe', '#6c5ce7', '#fd79a8', '#fab1a0', '#00cec9', '#ffeaa7', '#55efc4', '#00b894']
         return (
             <>
+                <Helmet>
+                    <title>{`${collection.title}`} :: 텀블벅</title>
+                </Helmet>
                 <div style={{ height: '330px', backgroundColor: color[parseInt(Math.random() * 15)] }}>
                     <div className={styles.banner}>
                         <img className={styles.cover} src={collection.cover} alt='cover' />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import axios from 'axios'
 import cx from 'classnames'
 import { Tabs } from 'antd';
@@ -35,6 +36,9 @@ class index extends Component {
         const endDate = parseInt((deadLine - new Date()) / (1000 * 60 * 60 * 24))
         return (
             <>
+                <Helmet>
+                    <title>{`${project.title}`} :: 텀블벅</title>
+                </Helmet>
                 <div className={styles.container}>
                     <div className={styles.category}>{project.category}</div>
                     <h1 className={styles.title}>{project.title}</h1>
