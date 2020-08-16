@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+import { Link } from 'react-router-dom'
 import { Carousel } from 'antd'
 import { fetchProjects } from '../../utils'
 
@@ -29,13 +30,15 @@ class index extends Component {
             <div style={{ position: 'relative', height: '480px' }}>
                 <Carousel ref={slider => (this.carousel = slider)} {...setting}>
                     {projects.map((project, index) =>
-                        <div style={{ width: '100%', height: '300px', position: 'relative' }}>
-                            <img className={styles.cover} src={project.cover} alt='cover' />
-                            <div className={styles.info}>
-                                <h1 className={styles.title}>{project.title}</h1>
-                                <p className={styles.description}>{project.description}</p>
+                        <Link to={`/project/${project.id}`} >
+                            <div style={{ width: '100%', height: '300px', position: 'relative' }}>
+                                <img className={styles.cover} src={project.cover} alt='cover' />
+                                <div className={styles.info}>
+                                    <h1 className={styles.title}>{project.title}</h1>
+                                    <p className={styles.description}>{project.description}</p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     )}
                 </Carousel>
                 <div className='container' style={{ position: 'relative' }}>

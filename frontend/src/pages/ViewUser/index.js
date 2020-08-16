@@ -46,7 +46,7 @@ class index extends Component {
                             <p style={{ marginBottom: '5px' }}>{createAt}일 전 가입</p>
                         </div>
                     </div>
-                    <Tabs defaultActiveKey="1" tabBarStyle={{ fontWeight: 'bold' }} >
+                    <Tabs defaultActiveKey="2" tabBarStyle={{ fontWeight: 'bold' }} >
                         <TabPane tab="소개" key="1">
                             {user.bio ?
                                 <p className={styles.userBio}>
