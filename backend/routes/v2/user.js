@@ -40,7 +40,7 @@ router.post('/sign', async (req, res) => {
     try {
         const CreateUser = await User.create(body)
 
-        res.json({ user: CreateUser })
+        res.json({ result: 'ok', user: CreateUser })
     } catch (error) {
         res.json({ error })
     }
@@ -50,7 +50,6 @@ router.post('/sign', async (req, res) => {
 // Login User
 router.post('/login', async (req, res) => {
     const { email, password } = req.body
-
     try {
         const findUser = await User.findOne({
             where: {
@@ -59,7 +58,12 @@ router.post('/login', async (req, res) => {
             },
             attributes: { exclude: ['password', 'login_method', 'created_at'] }
         })
-        res.json({ user: findUser })
+
+        if (findUser) {
+            return res.json({ result: 'ok', user: findUser })
+        } else {
+            return res.json({ result: 'failed', message: '아이디나 비밀번호가 일치하지 않습니다.' })
+        }
     } catch (error) {
         res.json({ error })
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Input, Button, Divider, message } from 'antd'
+import { Input, Button, Divider, message, notification } from 'antd'
 import { observable } from 'mobx'
 import { observer, inject } from 'mobx-react'
 
@@ -58,8 +58,19 @@ class index extends Component {
             password: this.password
         }).then(res => res.data)
 
-        this.props.userStore.login(res.user)
-        this.props.history.push('/')
+        if (res.result === 'ok') {
+            this.props.userStore.login(res.user)
+            this.props.history.push('/')
+        } else if (res.result === 'failed') {
+            notification.warning({
+                message: res.message
+            })
+        } else {
+            notification.error({
+                message: '다시 시도해주세요'
+            })
+        }
+
     }
 
     searchPassword = () => {
